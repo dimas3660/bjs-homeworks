@@ -77,33 +77,28 @@ class Library {
     }
 
     addBook(book) {
-        if (this.state > 30) {
+        if (book.state > 30) {
             this.books.push(book);
         }
     }
 
     findBookBy(type, value) {
-        for (let i = 0, i < this.books.length, i++) {
+        for (let i = 0; i < this.books.length; i++) {
             let one = this.books[i];
-            if (one.type === value) {
+            if (one[type] === value) {
                 return one;
-            } else {
-                return null;
             }
-
         }
+        return null;
     }
 
     giveBookByName(bookName) {
-        this.bookName = bookName;
-        for (let i = 0, i < this.books.length, i++) {
-            if (this.books[i].bookName === bookName) {
-                this.books.splice(books[i], 1);
-                return this.book;
-            } else {
-                return null;
+        for (let i = 0; i < this.books.length; i++) {
+            if (this.books[i].name === bookName) {
+                return this.books.splice(i, 1)[0];
             }
         }
+        return null;
     }
 
 }
@@ -124,7 +119,7 @@ library.giveBookByName("Машина времени");
 console.log("Количество книг после выдачи: " + library.books.length); //Количество книг после выдачи: 3
 
 //Задача 3
-class StudentLog() {
+class StudentLog {
     constructor(name) {
         this.name = name;
         this.journal = {};
